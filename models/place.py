@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""Defines Place class."""
+"""This file defines Place class with it's public attributes."""
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """
-    Defines Place class.
+    """The class implementation of a Place.
 
     Attributes:
         city_id (str): Identifier of associated city.
@@ -20,7 +19,6 @@ class Place(BaseModel):
         longitude (float): Longitude coordinate.
         amenity_ids (list): List of associated amenity IDs.
     """
-
     city_id = ""
     user_id = ""
     name = ""
