@@ -4,8 +4,7 @@ from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """
-    Defines State class.
+    """Represents the current state.
 
     Attributes:
         name (str): State name.
