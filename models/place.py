@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines Place class."""
+"""This file Defines Place class with it's public attributes."""
 from models.base_model import BaseModel
 
 

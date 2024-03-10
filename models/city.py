@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines City class."""
+"""This file Defines City class with its public attributes."""
 from models.base_model import BaseModel
 
 

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines Review class."""
+"""This file Defines Review class with it's public attributes."""
 from models.base_model import BaseModel
 
 
