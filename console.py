@@ -135,18 +135,18 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         """Delete an instance based on the class name and id."""
         arg_list = tokenize_arguments(arg)
-        key = arg_list[0] + '.' + arg_list[1]
         all_objs = storage.all()
-        if not arg:
+
+        if not arg_list:
             print("** class name missing **")
         elif arg_list[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
-        elif len(arg_list) == 1:
+        elif len(arg_list) < 2:
             print("** instance id missing **")
-        elif key not in all_objs:
+        elif "{}.{}".format(arg_list[0], arg_list[1]) not in all_objs:
             print("** no instance found **")
         else:
-            del all_objs[key]
+            del all_objs["{}.{}".format(arg_list[0], arg_list[1])]
             storage.save()
 
     def do_all(self, arg):
