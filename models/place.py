@@ -4,7 +4,22 @@ from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """Define the Place class."""
+    """
+    Defines Place class.
+
+    Attributes:
+        city_id (str): Identifier of associated city.
+        user_id (str): Identifier of associated user.
+        name (str): Place name.
+        description (str): Place description.
+        number_rooms (int): Number of rooms.
+        number_bathrooms (int): Number of bathrooms.
+        max_guest (int): Maximum number of guests.
+        price_by_night (int): Price per night.
+        latitude (float): Latitude coordinate.
+        longitude (float): Longitude coordinate.
+        amenity_ids (list): List of associated amenity IDs.
+    """
 
     city_id = ""
     user_id = ""

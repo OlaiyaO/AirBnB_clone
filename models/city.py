@@ -4,7 +4,13 @@ from models.base_model import BaseModel
 
 
 class City(BaseModel):
-    """Define the City class."""
+    """
+    Defines City class.
+
+    Attributes:
+        state_id (str): Identifier of associated state.
+        name (str): City name.
+    """
 
     state_id = ""
     name = ""
