@@ -16,7 +16,7 @@ class TestUser(unittest.TestCase):
 
     def test_City_inheritance(self):
         """
-            tests - that the City class Inherits from BaseModel
+            Tests - that the City class Inherits from BaseModel
         """
         new_city = City()
         self.assertIsInstance(new_city, BaseModel)
