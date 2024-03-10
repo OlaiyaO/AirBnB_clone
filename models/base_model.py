@@ -25,11 +25,13 @@ class BaseModel:
         self.id = str(uuid4())
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
-        
+
         if kwargs:
             for attribute, value in kwargs.items():
                 if attribute == "created_at" or attribute == "updated_at":
-                    self.__dict__[attribute] = datetime.strptime(value, date_format)
+                    self.__dict__[attribute] = datetime.strptime(
+                            value, date_format
+                            )
                 else:
                     self.__dict__[attribute] = value
         else:
