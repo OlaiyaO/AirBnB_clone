@@ -48,7 +48,7 @@ class HBNBCommand(cmd.Cmd):
     classes = {
             "BaseModel", "User", "State",
             "City", "Place", "Amenity", "Review"
-            }
+    }
 
     def do_quit(self, arg):
         """Quit command to exit the program."""
@@ -143,7 +143,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(arg_list) == 1:
             print("** instance id missing **")
-        elif key not in all_objs:
+        elif key not in all_objs.keys():
             print("** no instance found **")
         else:
             del all_objs[key]
@@ -153,7 +153,7 @@ class HBNBCommand(cmd.Cmd):
         """Print all string representations of instances."""
         arg_list = tokenize_arguments(arg)
         all_objs = storage.all()
-        if arg_list and argl[0] not in HBNBCommand.__classes:
+        if arg_list and arg_list[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
         else:
             obj_list = []
