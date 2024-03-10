@@ -157,10 +157,13 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             obj_list = []
-            if arg_list:
-                obj_list = [obj.__str__() for obj in all_objs.values() if arg_list[0] == obj.__class__.__name__]
-            else:
-                obj_list = [obj.__str__() for obj in all_objs.values()]
+            for obj in all_objs.values():
+                if arg_list and arg_list[0] == obj.__class__.__name__:
+                    obj_list.append("[{}] ({}) {}".format(
+                        obj.__class__.__name__, obj.id, obj.__dict__))
+                elif len(arg_list) == 0:
+                    obj_list.append("[{}] ({}) {}".format(
+                        obj.__class__.__name__, obj.id, obj.__dict__))
             print(obj_list)
 
 
