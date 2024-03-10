@@ -116,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """Print the string representation of an instance."""
-        
+
         arg_list = tokenize_arguments(arg)
         if len(arg_list) == 0:
             print("** class name missing **")
@@ -125,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(arg_list) == 1:
             print("** instance id missing **")
         else:
-            key = arg_list[0] + '.' + arg_list[1] 
+            key = arg_list[0] + '.' + arg_list[1]
             all_objs = storage.all()
             if key not in all_objs:
                 print("** no instance found **")
@@ -157,13 +157,13 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             obj_list = []
-            for obj in all_objs.values():
-                if arg_list and arg_list[0] == obj.__class__.__name__:
-                    obj_list.append(obj.__str__())
-                elif len(arg_list) == 0:
-                    obj_list.append(obj.__str__())
+            if arg_list:
+                obj_list = [obj.__str__() for obj in all_objs.values() if arg_list[0] == obj.__class__.__name__]
+            else:
+                obj_list = [obj.__str__() for obj in all_objs.values()]
             print(obj_list)
-    
+
+
     def do_count(self, arg):
         """Count the number of instances of a class."""
         arg_list = tokenize_arguments(arg)
