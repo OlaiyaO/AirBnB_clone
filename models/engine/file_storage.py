@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""A Definition for the FileStorage class.""" i
+"""Definition of the FileStorage class."""
 import json
 from models.base_model import BaseModel
 from models.user import User
@@ -8,6 +8,7 @@ from models.city import City
 from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
+from os.path import exists
 
 
 class FileStorage:
@@ -26,7 +27,7 @@ class FileStorage:
         FileStorage.__objects[key] = obj
 
     def save(self):
-        """Serialization of __objects to a JSON file."""
+        """Serialize __objects to a JSON file."""
         new_dict = {}
         for key, value in FileStorage.__objects.items():
             new_dict[key] = value.to_dict()
@@ -34,7 +35,7 @@ class FileStorage:
             json.dump(new_dict, file)
 
     def reload(self):
-        """Deserialization of the JSON file to __objects."""
+        """Deserializes the JSON file to __objects."""
         try:
             with open(FileStorage.__file_path, 'r') as file:
                 data = json.load(file)
