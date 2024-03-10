@@ -39,4 +39,4 @@ class FileStorage:
                     del obj_dict["__class__"]
                     self.new(eval(class_name)(**obj_dict))
         except FileNotFoundError:
-            pass    
+            pass
