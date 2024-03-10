@@ -12,7 +12,6 @@ class Review(BaseModel):
         user_id (str): Identifier of associated user.
         text (str): Review text.
     """
-
     place_id = ""
     user_id = ""
     text = ""

@@ -9,5 +9,4 @@ class Amenity(BaseModel):
     Attributes:
         name (str): The name given to the amenity.
     """
-
     name = ""
