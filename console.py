@@ -193,44 +193,51 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """Update an instance based on the class name and id."""
-        if not arg:
-            print("** class name missing **")
-            return
-
         arg_list = tokenize_arguments(arg)
+        all_objs = storage.all()
+
+        if len(arg_list) == 0:
+            print("** class name missing **")
+            return False
         if arg_list[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
-            return
-
-        if len(arg_list) < 2:
+            return False
+        if len(arg_list) == 1:
             print("** instance id missing **")
-            return
+            return False
 
-        key = arg_list[0] + '.' + arg_list[1]
-        all_objs = storage.all()
-        if key not in all_objs:
+        instance_key = "{}.{}".format(arg_list[0], arg_list[1])
+        if instance_key not in all_objs.keys():
             print("** no instance found **")
-            return
-
-        if len(arg_list) < 3:
+            return False
+        if len(arg_list) == 2:
             print("** attribute name missing **")
-            return
+            return False
+        if len(arg_list) == 3:
+            try:
+                type(eval(arg_list[2])) != dict
+            except NameError:
+                print("** value missing **")
+                return False
 
-        obj = all_objs[key]
-        attr_name = arg_list[2]
-
-        if len(arg_list) < 4:
-            print("** value missing **")
-            return
-
-        attr_value = arg_list[3]
-
-        if isinstance(attr_value, dict):  # Check if the value is a dictionary
-            for attribute, value in attr_value.items():
-                setattr(obj, attribute, value)
-        else:
-            setattr(obj, attr_name, attr_value)
-        obj.save()
+        if len(arg_list) == 4:
+            obj = all_objs[instance_key]
+            if arg_list[2] in obj.__class__.__dict__.keys():
+                val_type = type(obj.__class__.__dict__[arg_list[2]])
+                obj.__dict__[arg_list[2]] = val_type(arg_list[3])
+            else:
+                obj.__dict__[arg_list[2]] = arg_list[3]
+        elif type(eval(arg_list[2])) == dict:
+            obj = all_objs[instance_key]
+            for attr_name, attr_value in eval(arg_list[2]).items():
+                if (attr_name in obj.__class__.__dict__.keys() and
+                        type(obj.__class__.__dict__[attr_name]) in
+                        {str, int, float}):
+                    val_type = type(obj.__class__.__dict__[attr_name])
+                    obj.__dict__[attr_name] = val_type(attr_value)
+                else:
+                    obj.__dict__[attr_name] = attr_value
+        storage.save()
 
 
 if __name__ == '__main__':
