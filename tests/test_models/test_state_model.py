@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-    Tests - state
+    Tests for the State model.
 """
+
 import unittest
 from models.base_model import BaseModel
 from models.state import State
@@ -9,27 +10,40 @@ from models.state import State
 
 class TestState(unittest.TestCase):
     """
-        Test - State class.
+        Test the State class.
     """
 
-    def test_State_inheritence(self):
+    def setUp(self):
         """
-            Test - State class inherits from BaseModel.
+            Creates an instance for State.
         """
-        new_state = State()
-        self.assertIsInstance(new_state, BaseModel)
+        self.new_state = State()
 
-    def test_State_attributes(self):
+    def tearDown(self):
         """
-            Test - State class contains the attribute `name`.
+            Removes the State instance.
         """
-        new_state = State()
-        self.assertTrue("name" in new_state.__dir__())
+        del self.new_state
 
-    def test_State_attributes_type(self):
+    def test_state_inheritance(self):
         """
-            Test - State class attribute name is class type str.
+            Test that State class inherits from BaseModel.
         """
-        new_state = State()
-        name = getattr(new_state, "name")
+        self.assertIsInstance(self.new_state, BaseModel)
+
+    def test_state_attributes_existence(self):
+        """
+            Test that State class contains the attribute `name`.
+        """
+        self.assertTrue(hasattr(self.new_state, "name"))
+
+    def test_state_attribute_type(self):
+        """
+            Test that State class attribute `name` is of type str.
+        """
+        name = getattr(self.new_state, "name")
         self.assertIsInstance(name, str)
+
+
+if __name__ == "__main__":
+    unittest.main()
