@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-    test the amenity model
+    Test for the Amenity model.
 """
 
 import unittest
@@ -11,26 +11,33 @@ from models.amenity import Amenity
 
 class TestAmenity(unittest.TestCase):
     """
-        Testing Amenity class.
+        Testing Amenity class
     """
 
-    def test_Amenity_inheritence(self):
+    def setUp(self):
         """
-            Tests that Amenity class inherits from BaseModel
-        """        new_amenity = Amenity()
-        self.assertIsInstance(new_amenity, BaseModel)
+        Set up a new Amenity instance for each test.
+        """
+        self.new_amenity = Amenity()
 
-    def test_Amenity_attributes(self):
+    def test_amenity_inheritance(self):
         """
-            Test that Amenity class had name attribute
+        Test that the Amenity class inherits from BaseModel.
         """
-        new_amenity = Amenity()
-        self.assertTrue("name" in new_amenity.__dir__())
+        self.assertIsInstance(self.new_amenity, BaseModel)
 
-    def test_Amenity_attribute_type(self):
+    def test_amenity_attributes(self):
         """
-            Test that Amenity class had name attributes type
+        Test that Amenity class has the 'name' attribute.
         """
-        new_amenity = Amenity()
-        name_value = getattr(new_amenity, "name")
-        self.assertIsInstance(name_value, str)
+        self.assertTrue(hasattr(self.new_amenity, "name"))
+
+    def test_amenity_attribute_type(self):
+        """
+        Test that Amenity class 'name' attribute's type is str.
+        """
+        self.assertIsInstance(self.new_amenity.name, str)
+
+
+if __name__ == "__main__":
+    unittest.main()
