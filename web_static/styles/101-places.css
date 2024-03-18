@@ -1,0 +1,25 @@
+.places {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.place {
+	width: calc(33.33% - 20px);
+	margin-bottom: 40px;
+	padding: 20px;
+	border: 1px solid #DDDDDD;
+	box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+	.place {
+		width: calc(50% - 20px);
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.place {
+		width: 100%;
+	}
+}

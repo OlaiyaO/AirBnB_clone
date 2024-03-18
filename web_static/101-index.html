@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Places</title>
+		<link rel="stylesheet" href="styles/4-common.css">
+		<link rel="stylesheet" href="styles/3-header.css">
+		<link rel="stylesheet" href="styles/3-footer.css">
+		<link rel="stylesheet" href="styles/6-filters.css">
+		<link rel="stylesheet" href="styles/101-places.css">
+	</head>
+
+	<body>
+		<header>
+			<h1>Welcome to AirBnB</h1>
+		</header>
+
+		<section class="container">
+			<aside class="filters">
+				<h2>Filters</h2>
+				<div class="dropdown">
+					<button class="dropbtn">Filter By</button>
+					<div class="dropdown-content">
+						<a href="#">Option 1</a>
+						<a href="#">Option 2</a>
+						<a href="#">Option 3</a>
+					</div>
+				</div>
+			</aside>
+
+			<section class="places">
+				<!-- Flexbox layout will be applied through CSS -->
+				<article class="place">
+					<h1>Place 1</h1>
+					<div class="price_by_night">$100</div>
+					<div class="information">
+						<div class="max_guest">
+							<i class="fas fa-user"></i> Max Guests: 4
+						</div>
+						<div class="number_rooms">
+							<i class="fas fa-bed"></i> Bedrooms: 2
+						</div>
+						<div class="number_bathrooms">
+							<i class="fas fa-bath"></i> Bathrooms: 2
+						</div>
+					</div>
+					<div class="user">
+						<strong>Owner:</strong> John Doe
+					</div>
+					<div class="description">
+						<p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut tellus in dui consequat ultricies.
+						</p>
+					</div>
+					<div class="amenities">
+						<h2>Amenities</h2>
+						<ul>
+							<li><i class="fas fa-dog"></i> Pet Friendly</li>
+							<li><i class="fas fa-tv"></i> TV</li>
+							<li><i class="fas fa-wifi"></i> Wifi</li>
+							<!-- Add more amenities as needed -->
+						</ul>
+					</div>
+					<div class="reviews">
+						<h2>Reviews</h2>
+						<ul>
+							<li>
+								<h3>From John Doe on January 1st, 2023</h3>
+								<p>Great place, highly recommended!</p>
+							</li>
+							<!-- Add more reviews as needed -->
+						</ul>
+					</div>
+				</article>
+				<!-- Add more articles for additional places -->
+			</section>
+		</section>
+
+		<footer>
+			<h3>Contact us</h3>
+			<ul>
+				<li>Email: example@example.com</li>
+				<li>Phone: 123-456-7890</li>
+			</ul>
+		</footer>
+	</body>
+
+</html>
